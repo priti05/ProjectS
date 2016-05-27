@@ -1,0 +1,13 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+	xmlns:context="http://www.springframework.org/schema/context">
+	
+	<bean id="iRegistration" class="org.projectS.sl.registration.Registration"/>
+	
+	<bean id="registrationHelper" class="org.projectS.sl.registration.helper.RegistrationHelper"/>
+	
+	 <context:annotation-config />
+	
+</beans>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+	<Properties>
+		<Property name="log-path">/Users/Priti/Documents/ProjectS/logs</Property>
+	</Properties>
+	<Appenders>
+		<Console name="console-log" target="SYSTEM_OUT">
+			<PatternLayout pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n"/>
+		</Console>
+		<RollingFile name="projectS-log" fileName="${log-path}/all-log/projectS.log" filePattern="${log-path}/projectS-%d{yyyy-MM-dd}.log">
+			<PatternLayout>
+				<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] [%-5level] %logger{36}:%L - %msg%n%throwable</pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="24" modulate="true"/>
+				<SizeBasedTriggeringPolicy size="2 GB" />
+			</Policies>
+		</RollingFile>
+		<RollingFile name="projectS-error-log" fileName="${log-path}/error-log/projectS-error.log" filePattern="${log-path}/projectS-error-%d{yyyy-MM-dd}.log">
+			<PatternLayout>
+				<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] [%-5level] %logger{36}:%L - %msg%n%throwable</pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="24" modulate="true"/>
+				<SizeBasedTriggeringPolicy size="2 GB" />
+			</Policies>
+		</RollingFile>
+	</Appenders>
+	<Loggers>
+		<Logger name="org" level="debug" additivity="false">
+			<appender-ref ref="projectS-log" level="debug"/>
+			<appender-ref ref="projectS-error-log" level="error"/>
+		</Logger>
+		<!--<Root level="info" additivity="false">
+			<AppenderRef ref="console-log"/>
+		</Root>-->
+	</Loggers>
+</Configuration>
